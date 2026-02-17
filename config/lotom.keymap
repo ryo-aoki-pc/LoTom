@@ -215,14 +215,7 @@
         };
     };
 
-    combos {
-        compatible = "zmk,combos";
-
-        K_TEST {
-            bindings = <&none>;
-            key-positions = <23>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     keymap {
         compatible = "zmk,keymap";
