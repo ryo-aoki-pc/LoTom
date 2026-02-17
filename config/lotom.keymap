@@ -222,7 +222,7 @@
 
         DEFAULT {
             bindings = <
-&none               &none
+&mo 7               &bt BT_NXT
 &kp Q               &kp W         &kp E         &kp R      &kp T   &none  &none  &kp Y        &kp U  &kp I      &kp O    &kp P
 &mt LEFT_CONTROL A  &kp S         &kp D         &kp F      &kp G   &none  &none  &kp H        &kp J  &kp K      &kp L    &mt RCTRL MINUS
 &mt LEFT_SHIFT Z    &kp X         &kp C         &kp V      &kp B   &none  &none  &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
