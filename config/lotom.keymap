@@ -8,21 +8,24 @@
 
 / {
     behaviors {
-      scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
-          compatible = "zmk,behavior-sensor-rotate";
-          label = "ENCODER_MSC_DOWN_UP";
-          #sensor-binding-cells = <0>;
-          bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-          tap-ms = <20>;
-      };
+        scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "ENCODER_MSC_DOWN_UP";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
 
-      tab_slide: behavior_sensor_rotate_tab_slide {
-          compatible = "zmk,behavior-sensor-rotate";
-          label = "ENCODER_TAB_SLIDE";
-          #sensor-binding-cells = <0>;
-          bindings = <&kp LA(LG(RIGHT_ARROW))>, <&kp LA(LG(LEFT_ARROW))>;
-          tap-ms = <20>;
-      };
+            tap-ms = <20>;
+        };
+
+        tab_slide: behavior_sensor_rotate_tab_slide {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "ENCODER_TAB_SLIDE";
+            #sensor-binding-cells = <0>;
+            bindings = <&kp LA(LG(RIGHT_ARROW))>, <&kp LA(LG(LEFT_ARROW))>;
+
+            tap-ms = <20>;
+        };
+
         td_vim_d: td_vim_d {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_VIM_D";
@@ -58,7 +61,7 @@
         mm_vim_i: mm_vim_i {
             compatible = "zmk,behavior-mod-morph";
             label = "MM_VIM_I";
-            bindings = <&tog 2>, <&macro_vim_shift_i>;
+            bindings = <&tog 6>, <&macro_vim_shift_i>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -149,7 +152,7 @@
         macro_vim_shift_i: macro_vim_shift_i {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp HOME>, <&macro_wait_time 100>, <&tog 2>;
+            bindings = <&kp HOME>, <&macro_wait_time 100>, <&tog 6>;
 
             label = "MACRO_VIM_SHIFT_I";
         };
@@ -162,7 +165,7 @@
                 <&macro_wait_time 100>,
                 <&kp ENTER>,
                 <&macro_wait_time 100>,
-                <&tog 2>;
+                <&tog 6>;
 
             label = "MACRO_VIM_O";
         };
@@ -177,7 +180,7 @@
                 <&macro_wait_time 100>,
                 <&kp UP_ARROW>,
                 <&macro_wait_time 100>,
-                <&tog 2>;
+                <&tog 6>;
 
             label = "MACRO_VIM_SHIFT_O";
         };
@@ -185,7 +188,7 @@
         macro_vim_shift_a: macro_vim_shift_a {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp END>, <&macro_wait_time 100>, <&tog 2>;
+            bindings = <&kp END>, <&macro_wait_time 100>, <&tog 6>;
 
             label = "MACRO_VIM_SHIFT_A";
         };
@@ -193,7 +196,7 @@
         macro_vim_a: macro_vim_a {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp RIGHT>, <&macro_wait_time 100>, <&tog 2>;
+            bindings = <&kp RIGHT>, <&macro_wait_time 100>, <&tog 6>;
 
             label = "MACRO_VIM_A";
         };
@@ -204,11 +207,11 @@
 
         DEFAULT {
             bindings = <
-&kp ESCAPE                                                                &kp BACKSPACE
-&kp Q       &kp W         &kp E             &kp R           &kp T        &mo 6                      &kp BACKSLASH      &kp Y            &kp U     &kp I        &kp O         &kp P
-&mt LEFT_CONTROL A      &kp S         &kp D             &kp F           &kp G        &mo 6                      &kp BACKSLASH      &kp H            &kp J     &kp K        &kp L         &mt RCTRL MINUS
-&mt LEFT_SHIFT Z      &kp X         &kp C             &kp V           &kp B        &kp LEFT_BRACKET           &kp RIGHT_BRACKET  &kp N            &kp M     &kp COMMA    &kp DOT       &mt RIGHT_SHIFT SLASH
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &kp SPACE  &lt 4 SPACE  &kp LG(SPACE)              &kp ENTER          &lt 3 BACKSPACE                         &lt 2 ESCAPE  &kp RIGHT_BRACKET
+&none               &none
+&kp Q               &kp W         &kp E         &kp R      &kp T   &none  &none  &kp Y        &kp U  &kp I      &kp O    &kp P
+&mt LEFT_CONTROL A  &kp S         &kp D         &kp F      &kp G   &none  &none  &kp H        &kp J  &kp K      &kp L    &mt RCTRL MINUS
+&mt LEFT_SHIFT Z    &kp X         &kp C         &kp V      &kp B   &none  &none  &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
+&none               &kp LEFT_WIN  &kp LEFT_ALT  &kp SPACE  &tog 2  &none  &none  &lt 1 ENTER  &mo 6  &none
             >;
 
             sensor-bindings = <
@@ -217,13 +220,57 @@
             >;
         };
 
+        SYMBOL {
+            bindings = <
+&trans                   &trans
+&kp GRAVE                &kp NUMBER_7  &kp NUMBER_8  &kp LG(LS(NUMBER_4))  &kp PLUS      &trans  &trans  &kp BACKSLASH    &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SEMICOLON
+&kp SLASH                &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6          &kp ASTERISK  &trans  &trans  &kp EXCLAMATION  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp SQT
+&mt LEFT_SHIFT NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3          &kp PERIOD    &trans  &trans  &kp NUMBER_0     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL
+&trans                   &trans        &trans        &trans                &trans        &trans  &trans  &kp LEFT_SHIFT   &trans        &trans
+            >;
+
+            sensor-bindings = <
+                &inc_dec_kp RIGHT_ARROW LEFT_ARROW
+                &scroll_up_down
+            >;
+        };
+
+        VIM {
+            bindings = <
+&trans     &trans
+&kp GRAVE  &kp LC(LS(TAB))         &kp LG(RIGHT)  &kp NUMBER_9             &kp NUMBER_0       &trans  &trans  &trans  &kp RC(LEFT_ARROW)  &kp UP_ARROW      &kp RC(RIGHT_ARROW)  &kp LG(P)
+&kp TAB    &kp LA(LG(LEFT_ARROW))  &kp LG(LEFT)   &kp LG(LA(RIGHT_ARROW))  &kp LEFT_BRACKET   &trans  &trans  &trans  &kp LEFT_ARROW      &kp DOWN_ARROW    &kp RIGHT_ARROW      &kp LG(K)
+&kp LCMD   &kp LG(LS(LEFT_ARROW))  &trans         &kp LG(LS(RIGHT_ARROW))  &kp RIGHT_BRACKET  &trans  &trans  &trans  &trans              &kp LC(UP_ARROW)  &trans               &kp LG(L)
+&trans     &trans                  &trans         &trans                   &trans             &trans  &trans  &trans  &trans              &trans
+            >;
+
+            sensor-bindings = <
+                &inc_dec_kp RIGHT_ARROW LEFT_ARROW
+                &scroll_up_down
+            >;
+        };
+
+        VIM_SYMBOL {
+            bindings = <
+&trans     &trans
+&kp GRAVE  &kp LC(LS(TAB))         &kp LG(RIGHT)  &kp NUMBER_9             &kp NUMBER_0       &trans  &trans  &trans  &kp RC(LEFT_ARROW)  &kp UP_ARROW      &kp RC(RIGHT_ARROW)  &kp LG(P)
+&kp TAB    &kp LA(LG(LEFT_ARROW))  &kp LG(LEFT)   &kp LG(LA(RIGHT_ARROW))  &kp LEFT_BRACKET   &trans  &trans  &trans  &kp LEFT_ARROW      &kp DOWN_ARROW    &kp RIGHT_ARROW      &kp LG(K)
+&kp LCMD   &kp LG(LS(LEFT_ARROW))  &trans         &kp LG(LS(RIGHT_ARROW))  &kp RIGHT_BRACKET  &trans  &trans  &trans  &trans              &kp LC(UP_ARROW)  &trans               &kp LG(L)
+&trans     &trans                  &trans         &trans                   &trans             &trans  &trans  &trans  &trans              &trans
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp RIGHT_ARROW LEFT_ARROW>,
+                <&scroll_up_down>;
+        };
+
         MOUSE {
             bindings = <
-&trans                                                                                                                       &trans
-&trans     &trans        &trans            &trans          &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
-&trans     &trans        &trans            &trans          &trans  &trans      &trans  &trans  &trans  &mo 5  &trans  &trans
-&trans     &trans        &trans            &trans          &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
-&kp LCTRL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT  &trans  &trans      &trans  &mo 3                       &trans    &trans
+&none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &mo 5  &none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none
             >;
 
             sensor-bindings = <
@@ -234,41 +281,11 @@
 
         SCROLL {
             bindings = <
-&trans                                                                                          &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans      &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &trans  &mkp MB2  &trans
-&trans     &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB4  &none  &mkp MB5  &trans
-&trans     &trans  &trans  &trans  &trans  &trans      &trans  &trans                  &trans  &trans
-            >;
-
-            sensor-bindings = <
-                &inc_dec_kp RIGHT_ARROW LEFT_ARROW
-                &scroll_up_down
-            >;
-        };
-
-        ARROW {
-            bindings = <
-&trans                                                                                                                                                                                 &trans
-&kp GRAVE  &kp LC(LS(TAB))         &kp LG(RIGHT)   &kp NUMBER_9             &kp NUMBER_0       &trans      &trans  &trans  &kp RC(LEFT_ARROW)  &kp UP_ARROW      &kp RC(RIGHT_ARROW)  &kp LG(P)
-&kp TAB    &kp LA(LG(LEFT_ARROW))  &kp LG(LEFT)    &kp LG(LA(RIGHT_ARROW))  &kp LEFT_BRACKET   &trans      &trans  &trans  &kp LEFT_ARROW      &kp DOWN_ARROW    &kp RIGHT_ARROW      &kp LG(K)
-&kp LCMD   &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &kp RIGHT_BRACKET  &trans      &trans  &trans  &trans              &kp LC(UP_ARROW)  &trans               &kp LG(L)
-&trans     &trans                  &trans          &trans                   &trans             &trans      &trans  &trans                                         &trans               &trans
-            >;
-
-            sensor-bindings = <
-                &inc_dec_kp RIGHT_ARROW LEFT_ARROW
-                &scroll_up_down
-            >;
-        };
-
-        NUM {
-            bindings = <
-&trans                                                                                                                                                                  &trans
-&kp GRAVE                &kp NUMBER_7  &kp NUMBER_8  &kp LG(LS(NUMBER_4))  &kp PLUS      &trans      &trans  &kp BACKSLASH    &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SEMICOLON
-&kp SLASH                &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6          &kp ASTERISK  &trans      &trans  &kp EXCLAMATION  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp SQT
-&mt LEFT_SHIFT NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3          &kp PERIOD    &trans      &trans  &kp NUMBER_0     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL
-&trans                   &trans        &trans        &trans                &trans        &trans      &trans  &kp LEFT_SHIFT                               &trans        &trans
+&none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none     &none  &none     &none
+&none  &none  &none  &none  &none  &none  &none  &none  &mkp MB1  &none  &mkp MB2  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &mkp MB4  &none  &mkp MB5  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none     &none
             >;
 
             sensor-bindings = <
@@ -279,11 +296,11 @@
 
         FUNCTION {
             bindings = <
-&trans                                                                                       &trans
-&kp F1      &kp F2  &kp F3  &kp F4  &kp F5   &trans      &trans  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
-&trans  &trans  &trans  &trans  &trans  &trans      &none   &none   &none   &none   &none   &kp RCTRL
-&trans  &trans  &trans  &trans  &trans  &trans      &none   &none   &none   &none   &none   &kp RIGHT_SHIFT
-&trans  &trans  &trans  &trans  &trans  &trans      &trans   &trans                  &trans  &trans
+&none   &none
+&kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &none  &none  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
+&none   &none   &none   &none   &none   &none  &none  &none   &none   &none   &none   &none
+&none   &none   &none   &none   &none   &none  &none  &none   &none   &none   &none   &none
+&none   &none   &none   &none   &none   &none  &none  &none   &none   &none
             >;
 
             sensor-bindings = <
@@ -292,13 +309,13 @@
             >;
         };
 
-        BT {
+        BLUETOOTH {
             bindings = <
-&trans                                                                                                                                      &trans
-&kp LG(Q)      &kp LC(W)  &trans     &trans     &trans  &trans      &trans  &bt BT_PRV  &bt BT_NXT  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&kp LG(LS(Z))  &trans     &kp LC(C)  &trans     &trans  &trans      &trans  &trans      &trans      &trans        &trans        &trans
-&kp LG(Z)      &kp LG(X)  &kp LG(C)  &kp LG(V)  &trans  &trans      &trans  &trans      &trans      &trans        &trans        &trans
-&trans         &trans     &trans     &trans     &trans  &trans      &trans  &trans                                &trans        &trans
+&trans         &trans
+&kp LG(Q)      &kp LC(W)  &trans     &trans     &trans  &trans  &trans  &bt BT_PRV  &bt BT_NXT  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&kp LG(LS(Z))  &trans     &kp LC(C)  &trans     &trans  &trans  &trans  &trans      &trans      &trans        &trans        &trans
+&kp LG(Z)      &kp LG(X)  &kp LG(C)  &kp LG(V)  &trans  &trans  &trans  &trans      &trans      &trans        &trans        &trans
+&trans         &trans     &trans     &trans     &trans  &trans  &trans  &trans      &trans      &trans
             >;
 
             sensor-bindings = <
