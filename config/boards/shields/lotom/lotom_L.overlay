@@ -66,15 +66,23 @@
 
 &trackball_listener {
     status = "okay";
-    input-processors = <&zip_temp_layer 1 400>;
+    input-processors = <&zip_temp_layer 4 10000>;
 
     scroll {
-        layers = <2>;
+        layers = <5>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 16>, <&zip_xy_to_scroll_mapper>;
     };
 };
 
-&zip_temp_layer { require-prior-idle-ms = <200>; };
+&zip_temp_layer {
+    excluded-positions = <
+        18 // J
+        19 // K
+        20 // L
+    >;
+
+    require-prior-idle-ms = <200>;
+};
 
 // I2C設定 (OLED用)
 &pinctrl {
